@@ -1,0 +1,181 @@
+.page {
+    padding: 24px 16px;
+  }
+  
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  
+  .subtitle {
+    margin: 0;
+    opacity: 0.7;
+    font-size: 14px;
+  }
+  
+  .card {
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 14px;
+    background: #fff;
+  }
+  
+  .stack {
+    display: grid;
+    gap: 10px;
+  }
+  
+  .label {
+    display: grid;
+    gap: 6px;
+    font-size: 13px;
+    opacity: 0.9;
+  }
+  
+  .input,
+  .textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    outline: none;
+  }
+  
+  .input:focus,
+  .textarea:focus {
+    border-color: #9ca3af;
+  }
+  
+  .textarea {
+    min-height: 88px;
+    resize: vertical;
+  }
+  
+  .toolbar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 14px 0 18px;
+  }
+  
+  .btn {
+    border: 1px solid #d1d5db;
+    background: #fff;
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    border-color: #9ca3af;
+  }
+  
+  .btnPrimary {
+    border-color: #111827;
+    background: #111827;
+    color: #fff;
+  }
+  
+  .btnPrimary:hover {
+    opacity: 0.92;
+  }
+  
+  .btnDanger {
+    border-color: #ef4444;
+    color: #ef4444;
+    background: #fff;
+  }
+  
+  .btnDanger:hover {
+    background: #fff5f5;
+  }
+  
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .questions {
+    display: grid;
+    gap: 12px;
+  }
+  
+  .questionHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  
+  .questionMeta {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-bottom: 6px;
+  }
+  
+  .rightControls {
+    display: grid;
+    gap: 8px;
+    align-content: start;
+    min-width: 160px;
+  }
+  
+  .checkboxRow {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 13px;
+  }
+  
+  .optionsTitle {
+    font-weight: 600;
+    margin: 12px 0 8px;
+  }
+  
+  .optionsList {
+    display: grid;
+    gap: 8px;
+  }
+  
+  .optionRow {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .optionInput {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+  }
+  
+  .footerRow {
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  .hint {
+    opacity: 0.7;
+    font-size: 13px;
+  }
+  
+  .error {
+    margin-top: 12px;
+    color: #b91c1c;
+    font-size: 13px;
+  }

@@ -1,0 +1,29 @@
+# Node
+node_modules
+.pnpm-store
+
+# Build
+dist
+build
+coverage
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+
+# Vite
+.vite
+
+# TS
+*.tsbuildinfo
+
+# IDE
+.vscode
+.idea

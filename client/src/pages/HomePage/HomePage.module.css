@@ -1,0 +1,101 @@
+.page {
+    padding: 24px 16px;
+  }
+  
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  
+  .title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  
+  .btn {
+    border: 1px solid #d1d5db;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .btn:hover {
+    border-color: #9ca3af;
+  }
+  
+  .btnPrimary {
+    border-color: #111827;
+    background: #111827;
+    color: #fff;
+  }
+  
+  .btnPrimary:hover {
+    opacity: 0.92;
+  }
+  
+  .list {
+    display: grid;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  
+  .card {
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 14px;
+    background: #fff;
+    display: grid;
+    gap: 8px;
+  }
+  
+  .cardTitle {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 650;
+  }
+  
+  .cardDesc {
+    margin: 0;
+    opacity: 0.75;
+    font-size: 14px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .linkBtn {
+    border: 1px solid #d1d5db;
+    background: #fff;
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .linkBtn:hover {
+    border-color: #9ca3af;
+  }
+  
+  .meta {
+    font-size: 12px;
+    opacity: 0.7;
+  }

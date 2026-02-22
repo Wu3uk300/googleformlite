@@ -1,0 +1,9 @@
+{
+    "name": "google-forms-lite",
+    "private": true,
+    "version": "0.0.1",
+    "scripts": {
+      "dev": "pnpm -C server dev",
+      "build": "pnpm -C packages/shared build && pnpm -C server build"
+    }
+  }
