@@ -70,5 +70,6 @@ export const typeDefs = gql`
   type Mutation {
     createForm(title: String!, description: String, questions: [QuestionInput!]): Form!
     submitResponse(formId: ID!, answers: [AnswerInput!]!): Response!
+    deleteForm(id: ID!): Boolean!
   }
 `;

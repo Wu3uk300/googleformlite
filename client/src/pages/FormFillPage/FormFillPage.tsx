@@ -74,7 +74,7 @@ export const FormFillPage = () => {
     try {
       await submitResponse({ formId: id, answers: payloadAnswers }).unwrap();
     } catch {
-      // покажем ошибку из submitState ниже
+    
     }
   };
 

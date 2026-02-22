@@ -41,3 +41,7 @@ mutation CreateForm($title: String!, $description: String, $questions: [Question
     }
   }
 }
+
+mutation DeleteForm($id: ID!) {
+  deleteForm(id: $id)
+}

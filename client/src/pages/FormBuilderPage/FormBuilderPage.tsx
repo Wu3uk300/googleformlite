@@ -82,7 +82,7 @@ export const FormBuilderPage = () => {
       await createForm(vars).unwrap();
       navigate("/");
     } catch {
-      // error показываем ниже
+    
     }
   };
 
@@ -92,7 +92,6 @@ export const FormBuilderPage = () => {
         <div className={styles.header}>
           <div>
             <h1 className={styles.title}>Create new form</h1>
-            <p className={styles.subtitle}>Draft is kept locally until you save.</p>
           </div>
         </div>
 
@@ -148,7 +147,7 @@ export const FormBuilderPage = () => {
             return (
               <div key={q.id} className={styles.card}>
                 <div className={styles.questionHeader}>
-                  <div style={{ flex: 1 }}>
+                  <div className={styles.questionContent}>
                     <div className={styles.questionMeta}>
                       Question {idx + 1} — {q.type}
                     </div>
@@ -199,7 +198,7 @@ export const FormBuilderPage = () => {
                       ))}
                     </div>
 
-                    <div style={{ marginTop: 8 }}>
+                    <div className={styles.addOptionButton}>
                       <button className={styles.btn} type="button" onClick={() => addOption(q.id)}>
                         + Add option
                       </button>

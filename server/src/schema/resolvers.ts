@@ -152,5 +152,14 @@ export const resolvers = {
       db.responses.push(response);
       return response;
     },
+
+    deleteForm(_: unknown, args: { id: string }): boolean {
+      const index = db.forms.findIndex((f) => f.id === args.id);
+      if (index === -1) throw new Error("Form not found");
+
+      db.forms.splice(index, 1);
+      db.responses = db.responses.filter((r) => r.formId !== args.id);
+      return true;
+    },
   },
 };

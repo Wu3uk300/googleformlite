@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
-import { useGetFormsQuery } from "../../shared/api/generated";
+import { useGetFormsQuery, useDeleteFormMutation } from "../../shared/api/generated";
 import styles from "./HomePage.module.css";
 
 export const HomePage = () => {
-  const { data, isLoading, error, refetch, isFetching } = useGetFormsQuery();
+  const { data, isLoading, error, refetch, isFetching } = useGetFormsQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
+  const [deleteForm, { isLoading: isDeleting }] = useDeleteFormMutation();
 
   if (isLoading) {
     return (
@@ -17,7 +20,7 @@ export const HomePage = () => {
     return (
       <div className={styles.page}>
         <div className={styles.container}>
-          <div style={{ marginBottom: 12 }}>Error loading forms</div>
+          <div className={styles.errorMessage}>Error loading forms</div>
           <button className={styles.btn} type="button" onClick={() => refetch()}>
             Retry
           </button>
@@ -28,13 +31,23 @@ export const HomePage = () => {
 
   const forms = data?.forms ?? [];
 
+  const handleDelete = async (formId: string) => {
+    if (confirm("Are you sure you want to delete this form?")) {
+      try {
+        await deleteForm({ id: formId }).unwrap();
+      } catch (err) {
+        console.error("Error deleting form:", err);
+      }
+    }
+  };
+
   return (
     <div className={styles.page}>
       <div className={styles.container}>
         <div className={styles.header}>
           <h1 className={styles.title}>Forms</h1>
 
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <div className={styles.headerActions}>
             <Link className={`${styles.btn} ${styles.btnPrimary}`} to="/forms/new">
               + Create new form
             </Link>
@@ -66,6 +79,14 @@ export const HomePage = () => {
                   <Link className={styles.linkBtn} to={`/forms/${f.id}/responses`}>
                     View responses
                   </Link>
+                  <button
+                    className={`${styles.linkBtn} ${styles.btnDanger}`}
+                    type="button"
+                    onClick={() => handleDelete(f.id)}
+                    disabled={isDeleting}
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             ))}

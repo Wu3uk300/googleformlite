@@ -40,6 +40,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   createForm: Form;
   submitResponse: Response;
+  deleteForm: Scalars['Boolean']['output'];
 };
 
 
@@ -53,6 +54,10 @@ export type MutationCreateFormArgs = {
 export type MutationSubmitResponseArgs = {
   answers: Array<AnswerInput>;
   formId: Scalars['ID']['input'];
+};
+
+export type MutationDeleteFormArgs = {
+  id: Scalars['ID']['input'];
 };
 
 export type Query = {
@@ -151,6 +156,13 @@ export type SubmitResponseMutationVariables = Exact<{
 
 export type SubmitResponseMutation = { __typename?: 'Mutation', submitResponse: { __typename?: 'Response', id: string, formId: string, submittedAt: string, answers: Array<{ __typename?: 'Answer', questionId: string, value: any }> } };
 
+export type DeleteFormMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type DeleteFormMutation = { __typename?: 'Mutation', deleteForm: boolean };
+
 
 export const GetFormsDocument = `
     query GetForms {
@@ -225,17 +237,24 @@ export const SubmitResponseDocument = `
   }
 }
     `;
+export const DeleteFormDocument = `
+    mutation DeleteForm($id: ID!) {
+  deleteForm(id: $id)
+}
+    `;
 
 const injectedRtkApi = api.injectEndpoints({
   endpoints: (build) => ({
     GetForms: build.query<GetFormsQuery, GetFormsQueryVariables | void>({
-      query: (variables) => ({ document: GetFormsDocument, variables })
+      query: (variables) => ({ document: GetFormsDocument, variables }),
+      providesTags: () => [{ type: "Forms" }],
     }),
     GetForm: build.query<GetFormQuery, GetFormQueryVariables>({
       query: (variables) => ({ document: GetFormDocument, variables })
     }),
     CreateForm: build.mutation<CreateFormMutation, CreateFormMutationVariables>({
-      query: (variables) => ({ document: CreateFormDocument, variables })
+      query: (variables) => ({ document: CreateFormDocument, variables }),
+      invalidatesTags: () => [{ type: "Forms" }],
     }),
     GetResponses: build.query<GetResponsesQuery, GetResponsesQueryVariables>({
       query: (variables) => ({ document: GetResponsesDocument, variables }),
@@ -249,9 +268,13 @@ const injectedRtkApi = api.injectEndpoints({
         { type: "Responses", id: variables.formId },
       ],
     }),
+    DeleteForm: build.mutation<DeleteFormMutation, DeleteFormMutationVariables>({
+      query: (variables) => ({ document: DeleteFormDocument, variables }),
+      invalidatesTags: () => [{ type: "Forms" }],
+    }),
   }),
 });
 
 export { injectedRtkApi as api };
-export const { useGetFormsQuery, useLazyGetFormsQuery, useGetFormQuery, useLazyGetFormQuery, useCreateFormMutation, useGetResponsesQuery, useLazyGetResponsesQuery, useSubmitResponseMutation } = injectedRtkApi;
+export const { useGetFormsQuery, useLazyGetFormsQuery, useGetFormQuery, useLazyGetFormQuery, useCreateFormMutation, useGetResponsesQuery, useLazyGetResponsesQuery, useSubmitResponseMutation, useDeleteFormMutation } = injectedRtkApi;
 
